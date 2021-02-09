@@ -1,12 +1,14 @@
 <template>
   
-    <PrimeraPagina msg="Welcome to Your Vue.js App"/>
+    <PrimeraPagina/>
+    
   
 </template>
 
 <script>
 // @ is an alias to /src
 import PrimeraPagina from '@/components/PrimeraPagina.vue'
+
 
 export default {
   name: 'Home',

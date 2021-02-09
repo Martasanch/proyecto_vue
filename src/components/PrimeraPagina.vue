@@ -1,7 +1,7 @@
 <template>
-
+<div class="tarjeta">
   <div class="image">
-    <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-930x487.jpg"/>
+    <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-930x487.jpg" width="200" height="200"/>
   </div>
 
    <div class="text">
@@ -10,7 +10,7 @@
      Mi primera página VUE
     </p>
   </div>
-
+</div>
 </template>
 
 <script>
@@ -24,18 +24,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.text{
- display: flex;
+.tarjeta{ 
+ text-align: left;
+ width: 70%;
+ margin: auto;
+
+    .text{
+    width: 80%;
+    float:right;
 
       h1 {
-        margin: 40px 0 0;
         color:blueviolet;
           }
-}
-.image {
-  display: flex;
+    }
+    .image {
+    width: 20%;
+    float: left;
+    }
 
 }
-
-
 </style>
