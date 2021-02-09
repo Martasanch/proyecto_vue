@@ -1,7 +1,9 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Home</router-link> | <!-- componente creado para enlaces internos, sigo en el mismo index, pero voy mostrando diferentes componentes, es una SPA -->
+    <router-link to="/about">About</router-link> |
+    <router-link to="/ejemplo1">Ejemplo 1</router-link> |
+    <a href="https://www.google.com/">Google</a><!-- componente creado para enlaces externos, puerza que se cambie de página -->
   </div>
   <router-view/>
 </template>
