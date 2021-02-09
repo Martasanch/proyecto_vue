@@ -1,4 +1,4 @@
-# royecto_vue
+# proyecto_vue
 
 ## Project setup
 ```
