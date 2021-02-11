@@ -1,13 +1,12 @@
 <template>
 <div class="tarjeta">
   <div class="image">
-    <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/borrar-fondo-imagen-930x487.jpg" width="200" height="200"/>
+    <img src="@/assets/ovni.jpg" width="200" height="200"/>
   </div>
-
    <div class="text">
-    <h1>Para usar VUE hay que estudiar </h1>
+    <h1>HELLO, WORLD!</h1>
     <p>
-     Mi primera página VUE
+     Acabo de llegar de Marte
     </p>
   </div>
 </div>
@@ -25,21 +24,21 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .tarjeta{ 
- text-align: left;
- width: 70%;
- margin: auto;
+  display: flex;
+  justify-content: center;
+  border: solid 1px rgb(0, 255, 30);
+  width: 70%;
+  margin: auto;
 
     .text{
-    width: 80%;
-    float:right;
-
+   width: 70%;
       h1 {
         color:blueviolet;
           }
     }
     .image {
-    width: 20%;
-    float: left;
+      width: 30%;
+    
     }
 
 }

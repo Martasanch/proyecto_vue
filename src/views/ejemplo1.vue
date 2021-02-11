@@ -1,19 +1,22 @@
 <template>
 
    <div class="text">
-    <h1>ESTOY EN EL EJEMPLO 1 </h1>
+    <h1>ESTOY EN EL EJEMPLO 1, OS MUESTRO MI REACTIVIDAD </h1>
     <p>
-     Mi primera página VUE
+     <Reactividad inc="2"/>
+     <Reactividad inc="5"/>
+     <Reactividad inc="10"/>
     </p>
   </div>
 
 </template>
 
 <script>
+import Reactividad from '@/components/Reactividad'
 export default {
-  name: 'ejemplo1',
-  props: {
-    msg: String
+  
+  components: {
+    Reactividad
   }
 }
 </script>
