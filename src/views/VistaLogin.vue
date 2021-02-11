@@ -2,10 +2,10 @@
 
    <div class="formulario">
    <div class="input"> 
-     <Validaciones Datoform="dni" Reg="^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$"/>
+     <Login Dato="User" Valor="pepe"/>
     </div>
     <div class="input">
-      <Validaciones Datoform="telefono" Reg="^(\+34|0034|34)?[67]\d{8}$"/>
+      <Login Dato="Password" Valor="1234"/>
     </div> 
     
     
@@ -14,13 +14,12 @@
 </template>
 
 <script>
-import DNI from '@/components/DNI'
-import Validaciones from '@/components/Validaciones'
+
+import Login from '@/components/Login'
 export default {
   
   components: {
-    DNI,
-    Validaciones
+   Login
   }
 }
 </script>

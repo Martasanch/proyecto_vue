@@ -1,5 +1,5 @@
 <template>
-    <div class='dato'>
+    <div class='Login'>
         <label v-bind:class="{verde:color}">INTRO {{datoForm}}</label>
         <input @keyup="caracter">
     </div>
@@ -9,30 +9,31 @@
 <script>
 import {ref} from 'vue'
 export default {
-    name: 'Validaciones',
+    name: 'Login',
     props: {
-        Datoform:{
+        Dato:{
 
             type:String,
         },
-        Reg:{
+       
+        Valor:{
             type:String,
+
         }
-      
     },
 
     setup(props){//api 3.0
-    let datoForm=props.Datoform.toUpperCase()
-    let datoRegex=new RegExp(props.Reg)
+    let datoForm=props.Dato.toUpperCase()
     
+    let datoValor=props.Valor
     let color=ref(false) //color es un valor buliano, que asignamos a la clase, para que sea activa o no 
     
-    console.log(datoRegex)
+    console.log(datoValor)
     
-        const caracter=(e)=>{
+const caracter=(e)=>{
         let dato=e.target.value
         console.log(dato)
-        if(datoRegex.test(dato)) {
+        if(datoValor==dato){
             console.log("El dato es correcto.")
             color.value= true
           

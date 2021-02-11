@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import ejemplo1 from '../views/ejemplo1.vue'
 import EjemploDNI from '../views/EjemploDNI.vue'
+import VistaLogin from '../views/VistaLogin.vue'
+
 const routes = [
   {
     path: '/',
@@ -18,6 +20,12 @@ const routes = [
     name: 'EjemploDNI',
     component:EjemploDNI 
   },
+  {
+    path: '/VistaLogin',
+    name: 'VistaLogin',
+    component: VistaLogin
+  },
+
 
   {
     path: '/about',
