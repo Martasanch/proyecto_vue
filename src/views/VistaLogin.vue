@@ -29,11 +29,11 @@ export default {
 
      .formulario {
         padding: 20px;
-        border: 1px solid;
+        border: 1px solid black;
         color:white;
          margin-left: auto;
         margin-right:auto;
-        width: 40%;
+        width: 30%;
         background-color:cornsilk;
 
 

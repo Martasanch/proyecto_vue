@@ -1,7 +1,7 @@
 <template>
     <div class='Login'>
-        <label v-bind:class="{verde:color}">INTRO {{datoForm}}</label>
-        <input @keyup="caracter">
+        <label id="label" v-bind:class="{verde:color}">INTRO {{datoForm}}</label>
+        <input id="input" @keyup="caracter">
     </div>
    
 </template>
@@ -12,13 +12,10 @@ export default {
     name: 'Login',
     props: {
         Dato:{
-
             type:String,
         },
-       
         Valor:{
             type:String,
-
         }
     },
 
@@ -27,21 +24,16 @@ export default {
     
     let datoValor=props.Valor
     let color=ref(false) //color es un valor buliano, que asignamos a la clase, para que sea activa o no 
-    
-    console.log(datoValor)
+     //console.log(datoValor)
     
 const caracter=(e)=>{
         let dato=e.target.value
-        console.log(dato)
+        //console.log(dato)
         if(datoValor==dato){
             console.log("El dato es correcto.")
-            color.value= true
-          
-          return true
-            
-        } 
+            color.value= true    
+        }     
     }
-
        return{ caracter, datoForm, color} 
     }
 
@@ -53,7 +45,7 @@ const caracter=(e)=>{
 
 label{
     border: 1px dashed black;
-    border-radius:50px;
+    border-radius:5px;
     background-color: red;
     padding: 8px;
 }

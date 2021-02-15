@@ -12,7 +12,6 @@ export default {
     name: 'Validaciones',
     props: {
         Datoform:{
-
             type:String,
         },
         Reg:{
@@ -25,7 +24,7 @@ export default {
     let datoForm=props.Datoform.toUpperCase()
     let datoRegex=new RegExp(props.Reg)
     
-    let color=ref(false) //color es un valor buliano, que asignamos a la clase, para que sea activa o no 
+    let color=ref(false) //color es un valor booliano, que asignamos a la clase, para que sea activa o no 
     
     console.log(datoRegex)
     
