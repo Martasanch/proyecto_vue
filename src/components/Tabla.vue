@@ -1,4 +1,17 @@
 <template>
+   <div class="formulario">
+   <div class="input"> 
+     <Validaciones Id="Concepto" Datoform="Concepto" Reg=".+"/>
+    </div>
+    <div class="input">
+      <Validaciones Id="Cantidad" Datoform="Cantidad" Reg="[0-9]"/>
+    </div> 
+    <div class="input">
+      <Validaciones Id="Precio" Datoform="Precio" Reg="^[0-9]+([.][0-9]+)?$"/>
+    </div> 
+    <button @click="agregar">Añadir</button>
+    
+  </div>
 
     <table class='table'>
         <thead>
@@ -17,16 +30,26 @@
                 <td>{{dato.cantidad}}</td>
                 <td>{{subtotal(dato.precio,dato.cantidad)}}</td>
             </tr>
+            <tr class="total">
+               <td colspan="4">Total: {{total}} </td>
+            </tr>
         </tbody>
     
     </table>
+    <div class=total>
+
+    </div>
    
 </template>
 
 <script>
-import {ref, reactive} from 'vue'
+import Validaciones from './Validaciones'
+import {ref, reactive, onMounted} from 'vue'
 export default {
     name: 'Tabla',
+    components:{
+        Validaciones
+    },
     props:{},
    
     setup(){//api 3.0
@@ -39,9 +62,27 @@ export default {
 
     ])     
     const subtotal=(cant,precio)=>cant*precio
-   
+    let total=ref(0)
+    const calculaTotal=()=>{
+       Arraydatos.forEach(dato=>total.value+=dato.cantidad*dato.precio)
+    }
+    const agregar=()=>{
+         console.log(Concepto)
+        let nuevo={
+            concepto: Concepto.lastChild.value,
+            cantidad: Cantidad.lastChild.value,
+            precio: Precio.lastChild.value,
+        }
+        
+        Arraydatos.push(nuevo)
+        total.value=0
+        calculaTotal()
 
-        return { Arraydatos, subtotal}  
+
+
+    }
+   onMounted(()=>calculaTotal())
+        return { Arraydatos, subtotal, total, agregar}  
     }
 
 }
@@ -52,7 +93,7 @@ export default {
 .table{
     display: inline-block;
     justify-content: center;
-    border: 3px solid black;
+    border: 1px solid black;
         
         td{
             border: 1px dashed black;
@@ -64,6 +105,28 @@ export default {
             background-color:rgba(0, 128, 0, 0.217);
             padding:10px;
         }
+        .total{
+            text-align: right;
+            
+        }
         
 }
+
+      .formulario {
+        padding: 10px;
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right:auto;
+        width: 25%;
+        background-color:rgba(238, 130, 238, 0.469);
+        margin-bottom: 20px;
+
+
+        .input{
+
+          margin: 30px;
+          text-align: left;
+
+        }
+        }  
 </style>

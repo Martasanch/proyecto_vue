@@ -1,6 +1,6 @@
 <template>
 
-   <div class="formulario">
+  <div class="formulario">
    <div class="input"> 
      <Validaciones Datoform="dni" Reg="^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$"/>
     </div>

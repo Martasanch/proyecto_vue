@@ -51,10 +51,10 @@ export default {
 
 
 label{
-    border: 1px dashed black;
-    border-radius:50px;
+    border: 2px solid white;
+    border-radius:5px;
     background-color: red;
-    padding: 8px;
+    padding: 5px;
 }
 .verde{
     border: 1px dashed black;
