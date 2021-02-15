@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import ejemplo1 from '../views/ejemplo1.vue'
 import EjemploDNI from '../views/EjemploDNI.vue'
 import VistaLogin from '../views/VistaLogin.vue'
-
+import EjercicioTabla from '../views/EjercicioTabla.vue'
 const routes = [
   {
     path: '/',
@@ -25,7 +25,11 @@ const routes = [
     name: 'VistaLogin',
     component: VistaLogin
   },
-
+  {
+    path: '/EjercicioTabla',
+    name: 'EjercicioTabla',
+    component: EjercicioTabla
+  },
 
   {
     path: '/about',

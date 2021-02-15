@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link> |
     <router-link to="/ejemplo1">Ejemplo 1</router-link> |
     <router-link to="/EjemploDNI">Ejemplo DNI</router-link> |
+    <router-link to="/EjercicioTabla">Array-Tablas</router-link> |
     <router-link to="/VistaLogin">Login</router-link> |
    
     <a href="https://www.google.com/">Google</a><!-- componente creado para enlaces externos, fuerza que se cambie de página, solo se usan <a> para enlaces externos, para evitar que se regargue toda la página -->
