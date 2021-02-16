@@ -10,28 +10,30 @@
       <Validaciones Id="Precio" Datoform="Precio" Reg="^[0-9]+([.][0-9]+)?$"/>
     </div> 
     <button @click="agregar">Añadir</button>
-    
   </div>
 
-    <table class='table'>
+    <table class='tabla'>
         <thead>
             <tr>
                 <th>Concepto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
+                <th>Eliminar</th>
 
             </tr>
         </thead>
         <tbody>
             <tr v-for="(dato,i) in Arraydatos" :key="i">
-                <td>{{dato.concepto}}</td>
-                <td>{{dato.precio}}</td>
-                <td>{{dato.cantidad}}</td>
+                <td><input type="text" class="form-control" v-model="dato.concepto"></td>
+                <td><input type="number" class="form-control" v-model="dato.precio"></td>
+                <td><input type="number" class="form-control" v-model="dato.cantidad"></td>
                 <td>{{subtotal(dato.precio,dato.cantidad)}}</td>
+                <td><button class="btn btn-danger" @click="eliminar(i)">Eliminar</button></td>
             </tr>
             <tr class="total">
-               <td colspan="4">Total: {{total}} </td>
+                
+               <td colspan="5">Total: {{total}} </td>
             </tr>
         </tbody>
     
@@ -44,7 +46,7 @@
 
 <script>
 import Validaciones from './Validaciones'
-import {ref, reactive, onMounted} from 'vue'
+import {ref, reactive, onMounted, watchEffect} from 'vue'
 export default {
     name: 'Tabla',
     components:{
@@ -53,18 +55,21 @@ export default {
     props:{},
    
     setup(){//api 3.0
-    let Arraydatos=reactive([
+    
 
+    let Arraydatos=reactive([
         {concepto:'Pantalones vaqueros chico',cantidad:2,precio:30.99},
         {concepto:'Camiseta básica chico',cantidad:4,precio:6.99},
         {concepto:'Pijama unisex',cantidad:1,precio:12.50},
         {concepto:'Deportivas Nike',cantidad:1,precio:80.00}
-
     ])     
     const subtotal=(cant,precio)=>cant*precio
     let total=ref(0)
     const calculaTotal=()=>{
+        watchEffect(()=>
+       { total.value=0
        Arraydatos.forEach(dato=>total.value+=dato.cantidad*dato.precio)
+       })
     }
     const agregar=()=>{
          console.log(Concepto)
@@ -76,13 +81,19 @@ export default {
         
         Arraydatos.push(nuevo)
         total.value=0
-        calculaTotal()
-
-
+        Arraydatos.forEach(dato=>total.value+=dato.cantidad*dato.precio)
 
     }
-   onMounted(()=>calculaTotal())
-        return { Arraydatos, subtotal, total, agregar}  
+    
+
+    const eliminar=(item)=>{
+        console.log(item)//es el i que le mando desde eliminar, que va variando según la posición en el array
+    Arraydatos.splice(item, 1 );
+    }
+
+
+    onMounted(()=>calculaTotal())
+    return { Arraydatos, subtotal, total, agregar, eliminar}  
     }
 
 }
@@ -90,10 +101,10 @@ export default {
 
 <style lang="scss" scoped>
 
-.table{
+.tabla{
     display: inline-block;
     justify-content: center;
-    border: 1px solid black;
+    
         
         td{
             border: 1px dashed black;
@@ -112,21 +123,20 @@ export default {
         
 }
 
-      .formulario {
+    .formulario {
         padding: 10px;
         border: 1px solid black;
         margin-left: auto;
         margin-right:auto;
-        width: 25%;
+        width: 35%;
         background-color:rgba(238, 130, 238, 0.469);
         margin-bottom: 20px;
 
 
         .input{
-
           margin: 30px;
           text-align: left;
 
         }
-        }  
+    }  
 </style>
