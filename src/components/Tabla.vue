@@ -1,5 +1,5 @@
 <template>
-   <div class="formulario">
+   <div class="formulario d-flex align-items-center justify-content-center">
    <div class="input"> 
      <Validaciones Id="Concepto" Datoform="Concepto" Reg=".+"/>
     </div>
@@ -9,7 +9,9 @@
     <div class="input">
       <Validaciones Id="Precio" Datoform="Precio" Reg="^[0-9]+([.][0-9]+)?$"/>
     </div> 
-    <button @click="agregar">Añadir</button>
+    <div>
+    <button class="btn btn-success" @click="agregar">Añadir</button>
+    </div>
   </div>
 
     <table class='tabla'>
@@ -88,6 +90,8 @@ export default {
 
     const eliminar=(item)=>{
         console.log(item)//es el i que le mando desde eliminar, que va variando según la posición en el array
+        let opcion=confirm("¿Desea eliminar el artículo?")
+        if (opcion=true)
     Arraydatos.splice(item, 1 );
     }
 
@@ -124,17 +128,14 @@ export default {
 }
 
     .formulario {
+       
+        
         padding: 10px;
-        border: 1px solid black;
-        margin-left: auto;
-        margin-right:auto;
-        width: 35%;
-        background-color:rgba(238, 130, 238, 0.469);
         margin-bottom: 20px;
 
 
         .input{
-          margin: 30px;
+          margin: 5px;
           text-align: left;
 
         }
