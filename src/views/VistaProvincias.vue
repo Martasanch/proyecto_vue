@@ -1,7 +1,7 @@
 <template>
 
    <div class="text">
-    <h1>ESTOY EN PROVINCIAS, OS MUESTRO EL COMPONENTE PROVINCIAS</h1>
+    <h1>EL TIEMPO EN MUNICIPIOS DE ESPAÑA</h1>
     <p>
      <Provincias/>
  

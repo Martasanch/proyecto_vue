@@ -40,7 +40,7 @@ export default {
 
 
  function verSeleccionado(){
-	 alert("Has cambiado el select a "+ elemSeleccionado.value)
+	// console.log("Has cambiado el select a "+ elemSeleccionado.value)
  }   
 
     return{personajes, elemSeleccionado, verSeleccionado
@@ -55,6 +55,7 @@ export default {
 .imagen{
 	width: 100px;
 	height: 100px;
+	
 }
   
           
