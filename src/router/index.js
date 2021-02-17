@@ -4,6 +4,8 @@ import ejemplo1 from '../views/ejemplo1.vue'
 import EjemploDNI from '../views/EjemploDNI.vue'
 import VistaLogin from '../views/VistaLogin.vue'
 import EjercicioTabla from '../views/EjercicioTabla.vue'
+import VistaProvincias from '../views/VistaProvincias.vue'
+import VistaAvatares from '../views/VistaAvatares.vue'
 const routes = [
   {
     path: '/',
@@ -14,6 +16,11 @@ const routes = [
     path: '/ejemplo1',
     name: 'ejemplo1',
     component: ejemplo1
+  },
+  {
+    path: '/VistaAvatares',
+    name: 'VistaAvatares',
+    component: VistaAvatares
   },
     
   { path: '/EjemploDNI',
@@ -29,6 +36,10 @@ const routes = [
     path: '/EjercicioTabla',
     name: 'EjercicioTabla',
     component: EjercicioTabla
+  },
+  {path: '/VistaProvincias',
+  name: 'VistaProvincias',
+  component: VistaProvincias
   },
 
   {

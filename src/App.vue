@@ -6,6 +6,8 @@
     <router-link to="/EjemploDNI">Ejemplo DNI</router-link> |
     <router-link to="/EjercicioTabla">Array-Tablas</router-link> |
     <router-link to="/VistaLogin">Login</router-link> |
+    <router-link to="/VistaProvincias">Provincias</router-link> |
+    <router-link to="/VistaAvatares">Avatares</router-link> |
    
     <a href="https://www.google.com/">Google</a><!-- componente creado para enlaces externos, fuerza que se cambie de página, solo se usan <a> para enlaces externos, para evitar que se regargue toda la página -->
   </div>
