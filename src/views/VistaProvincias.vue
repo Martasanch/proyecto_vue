@@ -7,15 +7,24 @@
  
     </p>
   </div>
+     <div class="text">
+    <h1>MUNICIPIOS CON FILTRO</h1>
+    <p>
+     <ProvinciasFiltro/>
+ 
+    </p>
+  </div>
 
 </template>
 
 <script>
 import Provincias from '@/components/Provincias'
+import ProvinciasFiltro from '../components/ProvinciasFiltro.vue'
 export default {
   
   components: {
-    Provincias
+    Provincias,
+    ProvinciasFiltro
   }
 }
 </script>

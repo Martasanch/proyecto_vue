@@ -6,6 +6,8 @@ import VistaLogin from '../views/VistaLogin.vue'
 import EjercicioTabla from '../views/EjercicioTabla.vue'
 import VistaProvincias from '../views/VistaProvincias.vue'
 import VistaAvatares from '../views/VistaAvatares.vue'
+import Carrito from '../views/Carrito.vue'
+import VistaPrueba from '../views/VistaPrueba.vue'
 const routes = [
   {
     path: '/',
@@ -40,6 +42,16 @@ const routes = [
   {path: '/VistaProvincias',
   name: 'VistaProvincias',
   component: VistaProvincias
+  },
+  {
+    path: '/Carrito',
+    name: 'Carrito',
+    component: Carrito
+  },
+  {
+    path: '/VistaPrueba',
+    name: 'VistaPrueba',
+    component: VistaPrueba
   },
 
   {

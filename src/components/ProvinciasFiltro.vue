@@ -5,16 +5,22 @@
     <option v-for="(provincia,i) in provincias" :key="i" :value="provincia.CODPROV">{{provincia.NOMBRE_PROVINCIA}}</option>
 </select>
 
-<select v-model="municipio" @change="verInformacion">
-    <option v-for="(municipio,i) in municipios" :key="i" :value="municipio.COD_GEO">{{municipio.NOMBRE}}</option>
-</select>
+<input type="text" v-model="inputFiltro" placeholder="Filtro">
+
+<div class="filtrado">
+	<div v-for="(item, indice) in municipiosFiltrados" :key="indice">
+		<div class="elemento" @click="autocompletar(item.NOMBRE)">{{item.NOMBRE}}</div>
+
+	</div>
+</div>
+
+
 <div class="informacion" v-if="informacion.datos">
-	<ul><h4>Información meteorológica de la estación de {{informacion.datos.breadcrumb[3].name}}:</h4>
+	<ul><h4>Información meteorológica de la estación de {{informacion.datos.breadcrumb[3].name}}:</h4></ul>
 <li>HUMEDAD: {{informacion.datos.humedad}}</li>
 <li>TEMPERATURA MAX: {{informacion.datos.temperaturas.max}}</li>
 <li>TEMPERATURA MIN: {{informacion.datos.temperaturas.min}}</li>
 <li>VIENTO: {{informacion.datos.viento}}</li>
-</ul>
 </div>
 </div>   
 
@@ -22,9 +28,9 @@
 
 <script>
 
-import {ref, reactive} from 'vue'
+import {ref, reactive, watch, computed} from 'vue'
 export default {
-    name: 'Provincias',
+    name: 'ProvinciasFiltro',
     setup(){
 	
     let provincias=reactive([])
@@ -32,7 +38,19 @@ export default {
 	let municipio=ref("")
 	let municipios=reactive([])
 	let informacion=reactive([])
+	let inputFiltro=ref("")
 
+	let municipiosFiltrados=computed(()=>{
+		return municipios.filter(m=>m.NOMBRE.indexOf(inputFiltro.value)!=-1)
+	})
+
+	function autocompletar(nombre){
+		inputFiltro.value=nombre
+	}
+
+
+
+//Se piden los datos de provincias por fetch, la respuesta se pasa a json(), del objeto me quedo con provincias, que es un array y pusheo cada elemento dentro de mi array de provincias
 	fetch("https://www.el-tiempo.net/api/json/v2/provincias")
 	.then(res=>res.json())
 	.then(datos=>{
@@ -56,6 +74,9 @@ export default {
  }
 
 
+
+
+
   function verInformacion(){
 	 fetch(`https://www.el-tiempo.net/api/json/v2/provincias/${provincia.value}/municipios/${municipio.value}`)
 	 .then(res=>res.json())
@@ -68,7 +89,7 @@ export default {
 
   
 
-    return{provincias, provincia, verSeleccionado, municipio, municipios, verInformacion, informacion
+    return{provincias, provincia, verSeleccionado, municipio, municipios, verInformacion, informacion, inputFiltro, municipiosFiltrados, autocompletar
     }
 }
    
@@ -77,6 +98,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+	.elemento{
+		background-color: blueviolet;
+	}
 
   .informacion{
 	margin-left: auto;
