@@ -9,11 +9,31 @@
     <button @click="enviar">Enviar</button>
     </div>
    
-   
+     <table class='tabla'>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Eliminar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(usu,i) in ArrayUsuarios" :key="i">
+                <td>{{usu.nombre}}</td>
+                <td>{{usu.apellido}}</td>
+                <td><button class="btn btn-danger" @click="eliminar(usu._id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    
+    </table>
+
+
+
 </template>
 
 <script>
-import {reactive, ref} from 'vue'
+import {reactive, ref, onMounted} from 'vue'
 export default {
     name: 'Prueba',
        props: {
@@ -25,28 +45,49 @@ export default {
       let consulta=reactive({})
       let nombre=ref('')
       let apellido=ref('')
+      let ArrayUsuarios=reactive([])
 
 
-
-
-       fetch('http://localhost:8081/api/welcome')
+fetch('http://localhost:8081/api/welcome')
             .then(resp=>resp.json())
             .then(datos=>consulta.saludo=datos)
-    
-        function enviar(){
-  
-        /* fetch('http://localhost:8081/api/nuevo',{
+
+
+onMounted(()=>{
+    listar()
+
+})
+
+//Mostrar
+function listar(){
+             fetch('http://localhost:8081/api/listar')
+         .then(resp=>resp.json())
+            .then(datos=>{
+            ArrayUsuarios.splice(0)
+            datos.forEach(usuario => {
+                ArrayUsuarios.push(usuario)
+            })
+            })
+      
+}
+
+
+//Eliminar
+function eliminar(idSeleccionado){
+          fetch('http://localhost:8081/api/eliminar',{
             method:'POST',
             body: JSON.stringify({
-                dato1:nombre.value,
-                dato2:apellido.value
+               id: idSeleccionado
                 }),
             headers:{'Content-type':'application/json'}
             
-        })
-            .then(resp=>resp.json())
-            .then(datos=>consulta.respuesta=datos) */
+        }).then(resp=>resp.json())
+        .then(datos=>listar())
+}
 
+//Guardar    
+function enviar(){
+  
          fetch('http://localhost:8081/api/guardar',{
             method:'POST',
             body: JSON.stringify({
@@ -54,25 +95,14 @@ export default {
                 apellido:apellido.value
                 }),
             headers:{'Content-type':'application/json'}
-            
         })
             .then(resp=>resp.json())
             .then(datos=>consulta.respuesta=datos)
-      
-
-
-      
-
-
-
-
-
-
+              .then(datos=>listar())
+  
         }
-
-     
-
-        return{consulta, nombre, apellido, enviar}  
+  
+        return{consulta, nombre, apellido, enviar, ArrayUsuarios, eliminar}  
 
     }
 

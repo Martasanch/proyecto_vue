@@ -23,15 +23,18 @@ rtMain.post("/guardar", function (req, res) {
         });
   });
  
+//Listado de usuarios
+rtMain.get("/listar", async function (req, res) {
+    let misUsuarios = await daoUsuarios.listar();
+    //console.log(misUsuarios)
+    res.json(misUsuarios)
+  });
   
- //esto solo lo enviaba y lo mostraba por consola 
-/* rtMain.post('/nuevo', (req,res)=>{
-    let datos=req.body
-    console.log("Esto llega deste el cliente. Guardado en la bd",datos)
-    res.json({
-        respuesta:'Datos recibidos',
-        datos:datos
+
+//Eliminar Usuario
+rtMain.post('/eliminar', (req,res)=>{
+   daoUsuarios.eliminar(req.body.id)
+   res.json({respuesta: "eliminado ok"})
     })
-}) */
 
 module.exports=rtMain

@@ -5,7 +5,7 @@ mongoose.connect('mongodb://localhost:27017/usuarios_vue',
     useNewUrlParser: true,
     useUnifiedTopology:true,
     useCreateIndex:true,
-    useFindAndModify:false
+    useFindAndModify:true
  }
 )
 module.exports=mongoose.connection

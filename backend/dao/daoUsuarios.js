@@ -18,6 +18,19 @@ daoUsuarios.guardar = function guardar(usuario) {
   })
 }
 
+//listar
+daoUsuarios.listar=function find(){
+    return new Promise((resolved, rejet)=>{
+        resolved(Usuario.find().lean())
+    })
+
+}
+
+//Eliminar
+daoUsuarios.eliminar=function eliminar(id){
+Usuario.findOneAndRemove({_id:id})
+.then(datos=>console.log(datos))
+}
 
 
 
