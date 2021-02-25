@@ -35,7 +35,7 @@ export default {
     
         function enviar(){
   
-        fetch('http://localhost:8081/api/nuevo',{
+        /* fetch('http://localhost:8081/api/nuevo',{
             method:'POST',
             body: JSON.stringify({
                 dato1:nombre.value,
@@ -45,8 +45,29 @@ export default {
             
         })
             .then(resp=>resp.json())
+            .then(datos=>consulta.respuesta=datos) */
+
+         fetch('http://localhost:8081/api/guardar',{
+            method:'POST',
+            body: JSON.stringify({
+                nombre:nombre.value,
+                apellido:apellido.value
+                }),
+            headers:{'Content-type':'application/json'}
+            
+        })
+            .then(resp=>resp.json())
             .then(datos=>consulta.respuesta=datos)
       
+
+
+      
+
+
+
+
+
+
         }
 
      
