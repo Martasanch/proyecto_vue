@@ -8,6 +8,7 @@ import VistaProvincias from '../views/VistaProvincias.vue'
 import VistaAvatares from '../views/VistaAvatares.vue'
 import Carrito from '../views/Carrito.vue'
 import VistaPrueba from '../views/VistaPrueba.vue'
+import VistaMLenguaje from '../views/VistaMLenguaje.vue'
 const routes = [
   {
     path: '/',
@@ -18,6 +19,11 @@ const routes = [
     path: '/ejemplo1',
     name: 'ejemplo1',
     component: ejemplo1
+  },
+  {
+    path: '/VistaMLenguaje',
+    name: 'VistaMLenguaje',
+    component: VistaMLenguaje
   },
   {
     path: '/VistaAvatares',

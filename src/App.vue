@@ -10,6 +10,7 @@
     <router-link to="/VistaAvatares">Avatares</router-link> |
     <router-link to="/Carrito">Carrito</router-link> |
     <router-link to="/VistaPrueba">Prueba</router-link> |
+     <router-link to="/VistaMLenguaje">Idioma</router-link> |
     <a href="https://www.google.com/">Google</a><!-- componente creado para enlaces externos, fuerza que se cambie de página, solo se usan <a> para enlaces externos, para evitar que se regargue toda la página -->
   </div>
   <router-view/>
