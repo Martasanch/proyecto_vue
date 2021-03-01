@@ -1,47 +1,54 @@
 <template>
 
-  <div class="formulario">
-   <div class="input"> 
-     <MultiLenguaje/>
-    </div>
-   
-    
-    
-  </div>
+  <div class="home">
+  <h1>MultiLenguaje</h1>
 
+
+ <select v-model="currentLang">
+    <option v-for="(l, i) in langs" :key="i">
+      {{l}}
+    </option>
+</select> 
+<h1>Clave 'hello': {{lang.hello}}</h1>
+<h1>Clave 'bye': {{lang.bye}}</h1>
+<button @click="comprobar" class="btn btn-primary">Cambiar</button>
+
+</div>
 </template>
 
 <script>
-import MultiLenguaje from '@/components/MultiLenguaje'
-
+import i18next from 'i18next'
+import {useStore} from 'vuex'
+import {computed, ref, reactive} from 'vue'
 export default {
-  
+  name: 'VistaMLenguaje',
   components: {
-   MultiLenguaje
+ 
+  },
+  setup(){
+    console.log(i18next)
+    let langs=reactive(i18next.languages)
+    //console.log(langs)
+    let currentLang=ref(i18next.language)
+    let lang=computed(()=>{
+      return i18next.getDataByLanguage(currentLang.value)
+   
+    })
+ 
+   const store=useStore()
+   function comprobar(){
+    // console.log(store.state.userdata)
+   }
+
+    return{ currentLang, langs, lang, comprobar}
   }
 }
-</script>
+</script> 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
-     .formulario {
-        padding: 20px;
-        border: 1px solid;
-        color:white;
-         margin-left: auto;
-        margin-right:auto;
-        width: 40%;
-        background-color:cornsilk;
-
-
-        .input{
-
-          margin: 30px;
-          text-align: left;
-
-        }
-          }
+  
 
 
 </style>

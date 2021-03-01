@@ -9,6 +9,7 @@ import VistaAvatares from '../views/VistaAvatares.vue'
 import Carrito from '../views/Carrito.vue'
 import VistaPrueba from '../views/VistaPrueba.vue'
 import VistaMLenguaje from '../views/VistaMLenguaje.vue'
+import Storage from '../views/Storage.vue'
 const routes = [
   {
     path: '/',
@@ -58,6 +59,11 @@ const routes = [
     path: '/VistaPrueba',
     name: 'VistaPrueba',
     component: VistaPrueba
+  },
+  {
+    path: '/Storage',
+    name: 'Storage',
+    component: Storage
   },
 
   {
