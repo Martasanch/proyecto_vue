@@ -1,5 +1,6 @@
 <template>
   <div id="nav">
+     <div class="informacion"><Userdata /></div>
     <router-link to="/">Home</router-link> | <!-- componente creado para enlaces internos, sigo en el mismo index, pero voy mostrando diferentes componentes, es una SPA -->
     <router-link to="/about">About</router-link> |
     <router-link to="/ejemplo1">Ejemplo 1</router-link> |
@@ -39,3 +40,11 @@
   }
 }
 </style>
+<script>
+import Userdata from '@/components/Userdata'
+export default {
+  components: {
+    Userdata
+  }
+}
+</script>

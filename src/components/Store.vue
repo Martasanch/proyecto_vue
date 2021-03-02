@@ -9,8 +9,8 @@
    <button class="btn btn-danger" @click="logout">Logout</button>
     <button class="btn btn-warning" @click="aleatorio">Aleatorio</button>
   </div>
+<!-- <div><Userdata :nombre2="nombre" :apellidos2="apellidos"/></div> -->
 <div><Userdata/></div>
-
 
 </template>
 
@@ -24,18 +24,30 @@ export default {
 	components:{
 		Userdata
 	},
+	props:{
+
+	},
     setup(){
+		const store=useStore()
 		let nombre=ref("")
 		let apellidos=ref("")
 
 		function login(){
+			let user={
+				nombre:nombre.value,
+				apellidos: apellidos.value
+			}
+			store.commit('setUser',user)
 
 		}
-			function logout(){
+		function logout(){
+			let user={}
+			store.commit('setUser',user)
 			
 		}
 
-	function aleatorio(){
+		function aleatorio(){ //consulta a mongo
+			store.dispatch('fetchUsers')
 			
 		}
 

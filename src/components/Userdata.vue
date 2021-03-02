@@ -1,6 +1,7 @@
 <template>
-<div class="prueba">
-  <h4>hola {{nombre}} {{apellidos}}</h4>
+<div class="prueba"><!-- 
+  <h4>hola {{nombre2}} {{apellidos2}}</h4> -->
+    <h4>hola {{user.nombre}} {{user.apellidos}}</h4>
 </div>   
 
 </template>
@@ -11,12 +12,22 @@ import {ref, computed} from 'vue'
 import {useStore} from 'vuex'
 export default {
     name: 'Userdata',
+  /*   props:{
+        nombre2:String,
+        apellidos2:String
+        }, */
     setup(){
-        let nombre=ref("")
-        let apellidos=ref("")
+        const store=useStore()
+        let user=computed(()=>{
+            return store.getters.getUser //lo traemos de index.js de store y lo metemos en user
+        })
+console.log(user)
 
+       /*  let nombre=ref("")
+        let apellidos=ref("") */
 
-    return{nombre,apellidos
+        
+    return{/* nombre,apellidos */user
     }
 }
    
