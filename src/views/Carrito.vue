@@ -14,7 +14,7 @@
       />
        </li>
      </ul>
-    <p>Total Global:<span v-text="totalGlobal"></span></p>
+    <p>Total Global:<span> {{totalGlobal}}</span></p>
     </div>
    
     
@@ -24,31 +24,44 @@
 </template>
 
 <script>
-import Item from '@/components/Item'
-import {ref, onMounted} from 'vue'
+import Item from '@/components/Item.vue'
+import {ref, onMounted, computed} from 'vue'
+import {useStore} from 'vuex'
 export default {
-  name: "carrito",
+  name: "Carrito",
   components: {
   Item
   },
   setup(){
-let totalGlobal=ref(0)
-const articulos=[
+  const store=useStore()
+  let totalGlobal=computed(()=>store.getters.getTotal)
+
+let articulos=[
       {nombre:'cerillas',descripcion:'cerillas bonitas',imagen:'/img/avatar.png',precio:2.20},
       {nombre:'zapatos',descripcion:'zapatos feos',imagen:'/img/avatar.png',precio:2.20},
       {nombre:'martillo',descripcion:'herramienta',imagen:'img/avatar.png',precio:2.20}
     ]
-function verCambio(total){
- // console.log(total)
-  //console.log(totalGlobal.value)
-//totalGlobal.value=totalGlobal.value+total
-//console.log(totalGlobal.value)
-}
+
+    
+  function verCambio(art, total){
+  
+        console.log(art)
+let index=articulos.findIndex(articulo=>articulo.nombre==art)
+      console.log(index)
+    articulos[index].subtotal=total
+     let acumula=0
+      articulos.forEach(articulo=>{
+        acumula+=articulo.subtotal
+      })
+      store.commit('setTotal',acumula.toFixed(2))
+  
+  }
   
 
     return{articulos, verCambio , totalGlobal}
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

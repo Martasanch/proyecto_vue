@@ -19,6 +19,7 @@
 
 <script>
 import {ref, computed} from 'vue'
+import { useStore } from 'vuex'
 export default {
     name: 'Item',
        props: {
@@ -32,13 +33,14 @@ export default {
     },
 
     setup(props, context){
-      
+        const store=useStore()
         let cantidad=ref(1)
         let total=computed(()=>{
-            let resultado=(props.precio*cantidad.value).toFixed(2)
-            context.emit('cambioTotal', resultado)
+            let resultado=(props.precio*cantidad.value)
+            context.emit('cambioTotal',props.titulo, resultado)
             console.log(resultado)
-            return(resultado)
+            //store.commit('addTotal', resultado)
+            return resultado
             })
 
 

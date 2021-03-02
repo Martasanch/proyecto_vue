@@ -40,7 +40,7 @@ rtMain.post('/eliminar', (req,res)=>{
 //Idiomas
 rtMain.get('/lang/:language',(req,res)=>{
   let lang=req.params.language
-  console.log(lang)
+  //console.log(lang)
   fs.readFile(`./locales/${lang}.json`,'utf8',(err,data)=>{
     res.json(JSON.parse(data))
 
