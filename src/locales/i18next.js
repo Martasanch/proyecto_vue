@@ -1,20 +1,26 @@
 import i18next from 'i18next';
 
-import es from '@/locales/es.json'
-import en from '@/locales/en.json'
-import fr from '@/locales/fr.json'
-
-
-
+fetch('http://localhost:8081/api/lang/es')
+.then(res=>res.json())
+.then(data=>{
+    //console.log(data)
+    i18next.addResources('es', 'translation', data)
+})
 
 export default i18next.init({
   fallbackLng: ['en', 'fr'],
   lng: 'es',
   debug: true, //Depurar
   resources: {
-    en: en,
-    es: es,
-    fr: fr
+    en: {
+        translation:{}
+    },
+    es: {
+        translation:{}
+},
+    fr: {
+        translation:{}
+},
   }
 
 })

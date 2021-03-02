@@ -1,7 +1,7 @@
 const express=require('express')
 const rtMain=express.Router()
 const daoUsuarios = require("../dao/daoUsuarios");
-
+const fs = require('fs')
 
 
 rtMain.get('/welcome', (req,res)=>{
@@ -36,5 +36,16 @@ rtMain.post('/eliminar', (req,res)=>{
    daoUsuarios.eliminar(req.body.id)
    res.json({respuesta: "eliminado ok"})
     })
+
+//Idiomas
+rtMain.get('/lang/:language',(req,res)=>{
+  let lang=req.params.language
+  console.log(lang)
+  fs.readFile(`./locales/${lang}.json`,'utf8',(err,data)=>{
+    res.json(JSON.parse(data))
+
+  })
+})
+
 
 module.exports=rtMain
