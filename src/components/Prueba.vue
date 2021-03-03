@@ -1,11 +1,13 @@
 <template>
     <div class='prueba'>
-    <h1>Ejercicio Prueba</h1>
+    <h1>Gestión de usuarios</h1>
     <p>{{consulta.saludo}}</p>
-    <p>{{consulta.respuesta}}</p>
+    <p>Por consulta a la base de datos</p>
 
     NOMBRE: <input v-model="nombre" placeholder="nombre">
     APELLIDO: <input v-model="apellido" placeholder="apellido">
+    EMAIL: <input v-model="email" placeholder="email">
+    PASSWORD: <input v-model="password" placeholder="password">
     <button @click="enviar">Enviar</button>
     </div>
    
@@ -14,6 +16,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>Email</th>
                 <th>Eliminar</th>
 
             </tr>
@@ -22,6 +25,7 @@
             <tr v-for="(usu,i) in ArrayUsuarios" :key="i">
                 <td>{{usu.nombre}}</td>
                 <td>{{usu.apellido}}</td>
+                <td>{{usu.email}}</td>
                 <td><button class="btn btn-danger" @click="eliminar(usu._id)">Eliminar</button></td>
             </tr>
         </tbody>
@@ -45,6 +49,8 @@ export default {
       let consulta=reactive({})
       let nombre=ref('')
       let apellido=ref('')
+      let email=ref('')
+      let password=ref('')
       let ArrayUsuarios=reactive([])
 
 
@@ -92,7 +98,9 @@ function enviar(){
             method:'POST',
             body: JSON.stringify({
                 nombre:nombre.value,
-                apellido:apellido.value
+                apellido:apellido.value,
+                email:email.value,
+                password:password.value
                 }),
             headers:{'Content-type':'application/json'}
         })
@@ -102,7 +110,7 @@ function enviar(){
   
         }
   
-        return{consulta, nombre, apellido, enviar, ArrayUsuarios, eliminar}  
+        return{consulta, nombre, apellido, password, email, enviar, ArrayUsuarios, eliminar}  
 
     }
 
@@ -110,5 +118,23 @@ function enviar(){
 </script>
 
 <style lang="scss" scoped>
-
+.prueba{
+    margin-bottom: 40px;
+}
+.tabla{
+    margin:auto;
+thead{
+    border: 1px solid ;
+    background-color: rgba(197, 178, 216, 0.285);
+}
+tbody{
+    border: 1px solid ;
+}
+tr{
+    border: 1px solid ;
+}
+td{
+    border: 1px solid ;
+}
+}
 </style>

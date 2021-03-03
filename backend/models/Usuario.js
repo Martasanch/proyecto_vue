@@ -9,6 +9,12 @@ const schemaUsuario=new Schema({
     apellido: {
             type:String,
     },
+    email: {
+        type:String,
+},
+password: {
+        type:String,
+},
     
     })
     
