@@ -32,6 +32,26 @@ Usuario.findOneAndRemove({_id:id})
 .then(datos=>console.log(datos))
 }
 
+//Loguear usuario
+daoUsuarios.login=function login(email, password){ //se accede a la bd por las funciones de mongoose
+  return new Promise((resolved,reject)=>{
+  Usuario.findOne( {email:email})
+  .then(data=>{
+    console.log(data) //si encuentra un usuario lo muestra por consola, si no lo encuentra devuelve null
+    if(data){ //si tiene informacion he encontrado un usuario
+      if(data.password==password)
+      resolved(data)
+      else{
+        resolved(null) //el password no coincide
+      }
 
+    }
+    else{
+      resolved(null) //no he encontrado al usuario
+    }
+//me voy al rtMain
+  })
+})
+}
 
 module.exports = daoUsuarios;

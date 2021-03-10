@@ -11,12 +11,14 @@ rtMain.get('/welcome', (req,res)=>{
 })
 //Guardar usuario
 rtMain.post("/guardar", function (req, res) {
+  console.log(req.body)
     daoUsuarios
       .guardar(req.body)
         .then((resp) => {
-          res.json({ 
+          res.json({
               respuesta:'Guardado en Mongo'
-          });
+              
+            });
         })
         .catch((err) => {
       
@@ -45,6 +47,12 @@ rtMain.get('/lang/:language',(req,res)=>{
     res.json(JSON.parse(data))
 
   })
+})
+
+//Login
+rtMain.post('/login', (req, res)=>{
+  daoUsuarios.login(req.body.email,req.body.password)
+  .then(data=>res.json(data)) //envio el data al fetch de login2
 })
 
 

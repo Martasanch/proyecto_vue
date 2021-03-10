@@ -1,7 +1,7 @@
 <template>
 
   <div class="storage">
-  <h1>Storage</h1>
+  <h1>Aquí se puede logear cualquier usuario, aunque no esté en la base de datos</h1>
   <Store/>
 
 

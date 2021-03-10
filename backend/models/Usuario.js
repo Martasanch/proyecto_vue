@@ -4,17 +4,20 @@ const {Model, Schema}=mongoose
 
 const schemaUsuario=new Schema({
     nombre: {
-            type:String,
+        type:String,
     },
     apellido: {
-            type:String,
+        type:String,
     },
     email: {
         type:String,
-},
-password: {
+    },
+    password: {
         type:String,
-},
+    },
+    telefono: {
+        type:String,
+    },
     
     })
     
