@@ -13,6 +13,8 @@
     <router-link to="/VistaPrueba">Prueba</router-link> |
      <router-link to="/VistaMLenguaje">Idioma</router-link> |
       <router-link to="/Storage">Storage</router-link> |
+        <router-link to="/TinyMCE">Tiny</router-link> |
+
     <a href="https://www.google.com/">Google</a><!-- componente creado para enlaces externos, fuerza que se cambie de página, solo se usan <a> para enlaces externos, para evitar que se regargue toda la página -->
   </div>
   <router-view/>

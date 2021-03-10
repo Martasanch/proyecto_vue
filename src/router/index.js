@@ -10,6 +10,7 @@ import Carrito from '../views/Carrito.vue'
 import VistaPrueba from '../views/VistaPrueba.vue'
 import VistaMLenguaje from '../views/VistaMLenguaje.vue'
 import Storage from '../views/Storage.vue'
+import TinyMCE from '../views/TinyMCE.vue'
 const routes = [
   {
     path: '/',
@@ -20,6 +21,11 @@ const routes = [
     path: '/ejemplo1',
     name: 'ejemplo1',
     component: ejemplo1
+  },
+  {
+    path: '/TinyMCE',
+    name: 'eTinyMCE',
+    component: TinyMCE
   },
   {
     path: '/VistaMLenguaje',
